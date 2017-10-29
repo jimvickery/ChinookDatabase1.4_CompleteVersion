@@ -2,30 +2,47 @@
 
 1.	non_usa_customers.sql: Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
     
-    SELECT   Country, FirstName, LastName, CustomerId from Customer WHERE Country <>  'USA'
+        SELECT   Country, FirstName, LastName, CustomerId from Customer WHERE Country <>  'USA'
 
 2.	brazil_customers.sql: Provide a query only showing the Customers from Brazil.
 
-    SELECT   Country, FirstName, LastName, CustomerId from Customer WHERE Country =  'Brazil'
+        SELECT   Country, FirstName, LastName, CustomerId from Customer WHERE Country =  'Brazil'
 
 3.	brazil_customers_invoices.sql: Provide a query showing the Invoices of customers who are from Brazil. The resultant table should show the customer's full name, Invoice ID, Date of the invoice and billing country.
 
-    SELECT Customer.FirstName, Customer.LastName,  Invoice.CustomerId, Invoice.BillingCountry
-    From Customer 
-    INNER join Invoice 
-    ON Customer.CustomerId-Invoice.CustomerId
-    WHERE Invoice.BillingCountry = "Brazil";
+        SELECT Customer.FirstName, Customer.LastName,  Invoice.CustomerId, Invoice.BillingCountry
+        From Customer 
+        INNER join Invoice 
+        ON Customer.CustomerId-Invoice.CustomerId
+        WHERE Invoice.BillingCountry = "Brazil";
 
 4.	sales_agents.sql: Provide a query showing only the Employees who are Sales Agents.
-
+        
+        SELECT LastName, FirstName, Title FROM Employee WHERE Title = "Sales Support Agent"     
 
 5.	unique_invoice_countries.sql: Provide a query showing a unique/distinct list of billing countries from the Invoice table.
-
+        
+        SELECT DISTINCT BillingCountry
+        FROM Invoice;
 
 6.	sales_agent_invoices.sql: Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
+        
+        SELECT Customer.FirstName, Customer.LastName,  Invoice.CustomerId, Invoice.BillingCountry
+        From Customer 
+        INNER join Invoice 
+        ON Customer.CustomerId-Invoice.CustomerId
+        INNER join Employee 
+        ON Customer.SupportRepId-Employee.EmployeeId
+
 
 
 7.	invoice_totals.sql: Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
+        SELECT Customer.FirstName, Customer.LastName,  Invoice.CustomerId, InvoiceLine.UnitPrice, InvoiceLine.Quantity
+        From Customer 
+        INNER join Invoice 
+        ON Customer.CustomerId-Invoice.CustomerId
+        INNER join InvoiceLine 
+        ON Invoice.InvoiceId-InvoiceLine.InvoiceId
 
 
 8.	total_invoices_{year}.sql: How many Invoices were there in 2009 and 2011?
