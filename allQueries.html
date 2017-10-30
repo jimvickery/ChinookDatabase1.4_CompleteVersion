@@ -154,7 +154,16 @@
 19.	top_2009_agent.sql: Which sales agent made the most in sales in 2009?
 Hint: Use the MAX function on a subquery.
 
-
+                SELECT FullName, TheEmployeeId, MAX(TheTotalSales)
+                FROM (SELECT (Employee.FirstName || ' ' || Employee.LastName) AS FullName,
+                Employee.EmployeeId AS TheEmployeeId,
+                Sum(Invoice.Total) AS TheTotalSales
+                FROM
+                Customer
+                LEFT JOIN Employee ON Customer.SupportRepId == Employee.EmployeeId
+                LEFT JOIN Invoice ON Customer.CustomerId == Invoice.CustomerId
+                WHERE strftime('%Y',Invoice.InvoiceDate) == '2009'
+                GROUP BY Employee.EmployeeId)
                 
 
 
@@ -176,6 +185,13 @@ Hint: Use the MAX function on a subquery.
 
 21.	sales_agent_customer_count.sql: Provide a query that shows the count of customers assigned to each sales agent.
 
+                SELECT COUNT (Customer.CustomerId) AS CustomerID,
+                Customer.SupportRepId,
+                (Employee.FirstName || ' ' || Employee.LastName) as SalesRepName
+                FROM Customer
+                LEFT JOIN Employee 
+                ON Customer.SupportRepId = Employee.EmployeeId
+                GROUP BY SupportRepId
 
 
 
@@ -183,10 +199,18 @@ Hint: Use the MAX function on a subquery.
 22.	sales_per_country.sql: Provide a query that shows the total sales per country.
 
 
+                SELECT BillingCountry, SUM(Total)
+                FROM Invoice
+                GROUP BY BillingCountry
+
 
 23.	top_country.sql: Which country's customers spent the most?
 
-
+                SELECT MAX(TotalSales), BillingCountry
+                FROM (SELECT  BillingCountry,
+                SUM(Total) AS TotalSales
+                FROM Invoice
+                GROUP BY BillingCountry)
 
 
 24.	top_2013_track.sql: Provide a query that shows the most purchased track of 2013.
