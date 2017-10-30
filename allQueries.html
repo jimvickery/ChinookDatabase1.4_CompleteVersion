@@ -220,7 +220,18 @@ Hint: Use the MAX function on a subquery.
 
 25.	top_5_tracks.sql: Provide a query that shows the top 5 most purchased tracks over all.
 
-
+                SELECT Track.Name AS TrackName, Artist.Name AS ArtistName, COUNT(Track.Name )
+                From Invoice 
+                INNER join InvoiceLine 
+                ON Invoice.InvoiceId = InvoiceLine.InvoiceId
+                INNER join Track 
+                ON  Track.TrackId = InvoiceLine.TrackId 
+                INNER JOIN Album
+                ON Album.ArtistId = Track.AlbumId
+                INNER JOIN Artist
+                ON Artist.ArtistId = Album.AlbumId
+                GROUP BY Track.Name
+                ORDER BY COUNT(Track.Name ) DESC
 
 
 26.	top_3_artists.sql: Provide a query that shows the top 3 best selling artists.
