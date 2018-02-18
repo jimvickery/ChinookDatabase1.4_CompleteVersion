@@ -27,13 +27,26 @@
 
 6.	sales_agent_invoices.sql: Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
         
-                SELECT Customer.FirstName, Customer.LastName,  Invoice.CustomerId, Invoice.BillingCountry
+                <!-- SELECT Employee.FirstName, Employee.LastName,  Invoice.CustomerId, Invoice.BillingCountry
                 From Customer 
                 INNER join Invoice 
                 ON Customer.CustomerId-Invoice.CustomerId
                 INNER join Employee 
                 ON Customer.SupportRepId-Employee.EmployeeId;
+ -->
 
+                SELECT Employee.LastName, Employee.FirstName, Invoice.invoiceId
+                FROM Employee, Invoice, Customer
+                WHERE Customer.SupportRepId = Employee.EmployeeId
+                AND Invoice.CustomerId = Customer.CustomerId	
+
+
+                or
+
+                SELECT Employee.LastName || ' ' || Employee.FirstName as "fullname", Invoice.invoiceId
+                FROM Employee, Invoice, Customer
+                WHERE Customer.SupportRepId = Employee.EmployeeId
+                AND Invoice.CustomerId = Customer.CustomerId	
 
 
 7.	invoice_totals.sql: Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
@@ -49,8 +62,9 @@
 
 8.	total_invoices_{year}.sql: How many Invoices were there in 2009 and 2011?
         
-                SELECT COUNT (*) FROM Invoice WHERE InvoiceDate LIKE '%2009-1%' 
-                OR InvoiceDate LIKE '%2011-1%' 
+                SELECT COUNT (*) FROM Invoice WHERE InvoiceDate LIKE '%2009%' 
+                OR InvoiceDate LIKE '%2011%' 
+
 
 9.	total_sales_{year}.sql: What are the respective total sales for each of those years?
 
@@ -84,7 +98,7 @@
 
 13.	line_item_track_artist.sql: Provide a query that includes the purchased track name AND artist name with each invoice line item.
 
-                SELECT Track.Name AS TrackName, Artist.Name AS ArtistName
+                SELECT InvoiceLine.InvoiceLineId, Track.Name AS TrackName, Artist.Name AS ArtistName
                 From Invoice 
                 INNER join InvoiceLine 
                 ON Invoice.InvoiceId = InvoiceLine.InvoiceId
@@ -93,8 +107,8 @@
                 INNER JOIN Album
                 ON Album.ArtistId = Track.AlbumId
                 INNER JOIN Artist
-                ON Artist.ArtistId = Album.AlbumId;
-                
+                ON Artist.ArtistId = Album.AlbumId
+                ORDER BY ArtistName ASC
 
 
 14.	country_invoices.sql: Provide a query that shows the # of invoices per country. HINT: GROUP BY
@@ -215,6 +229,15 @@ Hint: Use the MAX function on a subquery.
 
 24.	top_2013_track.sql: Provide a query that shows the most purchased track of 2013.
 
+                SELECT trackname, max(tracksales)
+                from
+                (select t.name as trackname, sum(il.quantity) as tracksales
+                from track t
+                join InvoiceLine il on t.trackid = il.trackid
+                join invoice i on il.invoiceid = i.Invoiceid
+                where strftime("%Y", i.invoicedate) = "2013"
+                group by t.name
+                order by sum(il.quantity) desc);
 
 
 
@@ -231,7 +254,7 @@ Hint: Use the MAX function on a subquery.
                 INNER JOIN Artist
                 ON Artist.ArtistId = Album.AlbumId
                 GROUP BY Track.Name
-                ORDER BY COUNT(Track.Name ) DESC
+                ORDER BY COUNT(Track.Name ) DESC LIMIT 5
 
 
 26.	top_3_artists.sql: Provide a query that shows the top 3 best selling artists.
