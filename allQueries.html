@@ -265,3 +265,70 @@ Hint: Use the MAX function on a subquery.
 27.	top_media_type.sql: Provide a query that shows the most purchased Media Type.
 
 
+
+
+
+
+
+
+
+
+
+
+========================================
+SQL EXAMPLES 
+========================================
+Sr.No.	Statement & Description
+1.	WHERE SALARY LIKE '200%'
+
+Finds any values that start with 200.
+
+2.	WHERE SALARY LIKE '%200%'
+
+Finds any values that have 200 in any position/field.
+
+3.	WHERE SALARY LIKE '_00%'
+
+Finds any values that have 00 in the second and third positions.
+
+4.	WHERE SALARY LIKE '2_%_%'
+
+Finds any values that start with 2 and are at least 3 characters in length.
+
+5.	WHERE SALARY LIKE '%2'
+
+Finds any values that end with 2.
+
+6.	WHERE SALARY LIKE '_2%3'
+
+Finds any values that have a 2 in the second position and end with a 3.
+
+7.	WHERE SALARY LIKE '2___3'
+
+Finds any values in a five-digit number that start with 2 and end with 3.
+
+Let us take a real example, consider the CUSTOMERS table having the following records.
+
++----+----------+-----+-----------+----------+
+| ID | NAME     | AGE | ADDRESS   | SALARY   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Mumbai    |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | MP        |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+
+The following code block is an example, which would display all the records from the CUSTOMERS table where the SALARY starts with 200.
+
+SQL> SELECT * FROM CUSTOMERS
+WHERE SALARY LIKE '200%';
+This would produce the following result.
+
++----+----------+-----+-----------+----------+
+| ID | NAME     | AGE | ADDRESS   | SALARY   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  3 | kaushik  |  23 | Kota      |  2000.00 |
++----+----------+-----+-----------+----------+
