@@ -389,10 +389,6 @@ INSERT INTO Professor (professor_id, Name, department_id, salary)  VALUES (10, '
 
 
 
-
-
-
-
 create table semester ( 
 semester_id number, 
 professor_id number, 
@@ -424,6 +420,31 @@ INNER join department
 ON professor.department_id = department.department_id
 WHERE department.name = 'Technology';
 
+
+Result:
+PROFESSOR_ID	NAME	DEPARTMENT_ID	SALARY	DEPARTMENT_ID	NAME
+6	Eugene George               	5	10487	5	Technology                  
+9	Daniel Gilbert              	5	35678	5	Technology                  
+
+
+
+
+
+
+
+This join gets only professor nanes and department names
+
+SELECT professor.name,   department.name
+from professor
+INNER join department
+ON professor.department_id = department.department_id
+WHERE department.name = 'Technology';
+
+Result:
+
+NAME	NAME
+Eugene George               	Technology                  
+Daniel Gilbert              	Technology  
 
 
 
