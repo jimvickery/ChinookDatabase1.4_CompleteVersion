@@ -444,7 +444,24 @@ Result:
 
 NAME	NAME
 Eugene George               	Technology                  
-Daniel Gilbert              	Technology  
+Daniel Gilbert              	Technology                  
+Download CSV
+2 rows selected.
 
+
+
+
+
+SELECT professor.name,   department.name
+from professor
+INNER join department
+ON professor.department_id = department.department_id
+WHERE department.name = 'Clinical Medicine';
+
+NAME	NAME
+Nicole Gome                 	Clinical Medicine           
+Matthew Stevens             	Clinical Medicine           
+Download CSV
+2 rows selected.
 
 
