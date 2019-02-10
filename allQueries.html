@@ -382,7 +382,7 @@ INSERT INTO Professor (professor_id, Name, department_id, salary)  VALUES (10, '
 
 create table course (
 course_id number(5), 
-Name char(38), 
+Name char(44), 
 department_id number(5), 
 credits number(5), 
 PRIMARY KEY (course_id) );
@@ -512,7 +512,11 @@ Gets all Professors with Depts.
 SELECT professor.name,   department.name
 from professor
 INNER join department
-ON professor.department_id = department.department_id;
+ON professor.department_id = department.department_id
+INNER join
+
+;
+
 
 
 Results:
@@ -529,3 +533,40 @@ Daniel Gilbert              	Technology
 Matthew Stevens             	Clinical Medicine           
 Download CSV
 10 rows selected.
+
+
+
+
+
+SELECT professor.name, department.name
+from professor
+INNER join department
+ON professor.department_id = department.department_id
+INNER join  course
+ON department.department_id = course.department_id;
+ 
+
+Result:
+NAME	NAME
+Nicole Gome                 	Clinical Medicine           
+Matthew Stevens             	Clinical Medicine           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Nicole Gome                 	Clinical Medicine           
+Matthew Stevens             	Clinical Medicine           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Billy Knight                	Physical Sciences           
+Joyce Flores                	Physical Sciences           
+Download CSV
+20 rows selected.
