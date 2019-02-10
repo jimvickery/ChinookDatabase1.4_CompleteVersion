@@ -568,3 +568,51 @@ Billy Knight                	Physical Sciences
 Joyce Flores                	Physical Sciences           
 Download CSV
 20 rows selected.
+
+
+
+
+
+SELECT *
+from professor
+LEFT OUTER join department
+ON professor.department_id = department.department_id
+LEFT OUTER join  course
+ON department.department_id = course.department_id
+LEFT OUTER join schedule 
+ON professor.professor_id = schedule.professor_id;
+
+Results:
+PROFESSOR_ID	NAME	DEPARTMENT_ID	SALARY	DEPARTMENT_ID	NAME	COURSE_ID	NAME	DEPARTMENT_ID	CREDITS	PROFESSOR_ID	COURSE_ID	SEMESTER	YEAR
+10	Matthew Stevens             	2	26648	2	Clinical Medicine           	9	Clinical Biochemistry                       	2	3	10	2	4	2009
+5	Nicole Gome                 	2	30860	2	Clinical Medicine           	9	Clinical Biochemistry                       	2	3	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	4	Astronomy                                   	1	6	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	4	Astronomy                                   	1	6	 - 	 - 	 - 	 - 
+10	Matthew Stevens             	2	26648	2	Clinical Medicine           	10	Clinical Neuroscience                       	2	5	10	2	4	2009
+5	Nicole Gome                 	2	30860	2	Clinical Medicine           	10	Clinical Neuroscience                       	2	5	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	1	Pure Mathematics and Mathematical Statistics	1	3	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	1	Pure Mathematics and Mathematical Statistics	1	3	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	8	Geography                                   	1	7	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	8	Geography                                   	1	7	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	5	Chemistry                                   	1	1	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	5	Chemistry                                   	1	1	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	3	Physics                                     	1	7	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	3	Physics                                     	1	7	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	7	Earth Science                               	1	7	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	7	Earth Science                               	1	7	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	2	Materials Science and Metallurgy            	1	5	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	2	Materials Science and Metallurgy            	1	5	 - 	 - 	 - 	 - 
+2	Billy Knight                	1	9793	1	Physical Sciences           	6	Applied Mathematics and Theoretical Physics 	1	5	 - 	 - 	 - 	 - 
+8	Joyce Flores                	1	25796	1	Physical Sciences           	6	Applied Mathematics and Theoretical Physics 	1	5	 - 	 - 	 - 	 - 
+3	Harry Myers                 	4	25194	4	Arts and Humanities         	 - 	 - 	 - 	 - 	3	3	1	2011
+1	Nancy Daniels               	4	7169	4	Arts and Humanities         	 - 	 - 	 - 	 - 	1	7	5	2011
+7	Gloria Vasquez              	4	6353	4	Arts and Humanities         	 - 	 - 	 - 	 - 	7	7	1	2010
+1	Nancy Daniels               	4	7169	4	Arts and Humanities         	 - 	 - 	 - 	 - 	1	1	3	2014
+1	Nancy Daniels               	4	7169	4	Arts and Humanities         	 - 	 - 	 - 	 - 	1	2	3	2008
+1	Nancy Daniels               	4	7169	4	Arts and Humanities         	 - 	 - 	 - 	 - 	1	7	5	2007
+9	Daniel Gilbert              	5	35678	5	Technology                  	 - 	 - 	 - 	 - 	9	3	1	2012
+6	Eugene George               	5	10487	5	Technology                  	 - 	 - 	 - 	 - 	 - 	 - 	 - 	 - 
+4	Antonio Rodriquez           	3	9686	3	Biological Science          	 - 	 - 	 - 	 - 	4	4	3	2003
+4	Antonio Rodriquez           	3	9686	3	Biological Science          	 - 	 - 	 - 	 - 	4	6	1	2001
+Download CSV
+30 rows selected.
