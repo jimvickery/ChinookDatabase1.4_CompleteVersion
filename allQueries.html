@@ -730,7 +730,7 @@ Download CSV
 
 
 
-SELECT professor.name as "Professor.Name", course.name as "Course.Name" 
+SELECT DISTINCT professor.name as "Professor.Name", course.name as "Course.Name" 
 from professor 
 INNER join schedule  
 ON schedule.professor_id = professor.professor_id 
@@ -739,19 +739,19 @@ ON schedule.course_id = course.course_id
 INNER join department 
 ON department.department_id = course.department_id;
 
+
 Result:
 
 Professor.Name	Course.Name
+Harry Myers                 	Earth Science                               
+Nancy Daniels               	Applied Mathematics and Theoretical Physics 
+Antonio Rodriquez           	Geography                                   
+Daniel Gilbert              	Earth Science                               
+Matthew Stevens             	Applied Mathematics and Theoretical Physics 
+Gloria Vasquez              	Materials Science and Metallurgy            
 Antonio Rodriquez           	Astronomy                                   
 Nancy Daniels               	Pure Mathematics and Mathematical Statistics
-Antonio Rodriquez           	Geography                                   
-Harry Myers                 	Earth Science                               
-Daniel Gilbert              	Earth Science                               
 Nancy Daniels               	Materials Science and Metallurgy            
-Gloria Vasquez              	Materials Science and Metallurgy            
-Nancy Daniels               	Materials Science and Metallurgy            
-Matthew Stevens             	Applied Mathematics and Theoretical Physics 
-Nancy Daniels               	Applied Mathematics and Theoretical Physics 
-
 Download CSV
-10 rows selected.
+
+9 rows selected.
