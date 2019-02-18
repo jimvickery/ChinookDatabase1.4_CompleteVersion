@@ -1,8 +1,8 @@
 # ChinookDatabase1.4_CompleteVersion
 ```
-NOTE: The SQL Queries and Database Creation is located in the allQueries.html file. 
+NOTE: The SQL queries for Chinook DB and Database Creation and queries for the University DB are located in the allQueries.html file above. 
 It has several Queries for Chinook Database found in Chinook_Sqlite.sqlite above...also code to 
-create a database inside of any SQL DB such as Oracle's SQL Live at https://livesql.oracle.com. 
+create a database inside of any SQL DB such as Oracle's SQL Live found at https://livesql.oracle.com. 
 There you can create a free account and use the SQL in middle of allQueries.html page to create a 
 database, populate it and then query it using the queries from stated page.
 ```
