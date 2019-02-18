@@ -1,4 +1,9 @@
 # ChinookDatabase1.4_CompleteVersion
+=================================================================================================
+NOTE: The SQL Queries and Database Creation is located in the allQueries.html file. It has several Queries for Chinook Database...also code to create a database inside of any SQL DB such as Oracle's SQL Live at https://livesql.oracle.com/apex/f?p=590:1000. There you can create a free account and use the SQL in middle of allQueries.html page to create a database, populate it and then query it using the queries from this page.
+=================================================================================================
+
+
 non_usa_customers.sql: Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
 
 brazil_customers.sql: Provide a query only showing the Customers from Brazil.
@@ -55,7 +60,7 @@ top_3_artists.sql: Provide a query that shows the top 3 best selling artists.
 top_media_type.sql: Provide a query that shows the most purchased Media Type.
 
 
-Using Oracle SQL Developer to run SQL Commands
+Using Oracle SQL Developer to run SQL Commands can be seen inside the allQueries.html file.
 
 
 
